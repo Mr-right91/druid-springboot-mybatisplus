@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource  #连接池类型
+    url: jdbc:mysql://localhost:3306/cms  #数据库路径
+    driver-class-name: com.mysql.jdbc.Driver  #mysql驱动
+    username: root  #数据用户名（替换成自己当前环境的）
+    password: 1234  #数据库密码（替换成自己当前环境的）
+    filters: log4j,wall,mergeStat #properties文件不用这个，但yml文件必须加上，不然druid不会监控sql
+
+###################  mybatis-plus配置  ###################
+mybatis-plus:
+  mapper-locations: classpath*:com/zhdr/cms/dao/mapping/*.xml #mapper.xml文件所在的包
+  typeAliasesPackage: com.zhdr.cms.model  #model类所在的包
+  global-config:
+    id-type: 0  #0:数据库ID自增   1:用户输入id  2:全局唯一id(IdWorker)  3:全局唯一ID(uuid)
+    db-column-underline: false
+    refresh-mapper: true
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: true #配置的缓存的全局开关
+    lazyLoadingEnabled: true #延时加载的开关
+    multipleResultSetsEnabled: true #开启的话，延时加载一个属性时会加载该对象全部属性，否则按需加载属性

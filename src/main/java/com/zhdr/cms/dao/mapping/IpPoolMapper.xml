@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhdr.cms.dao.IpPoolMapper" >
+  <resultMap id="BaseResultMap" type="com.zhdr.cms.model.IpPool" >
+    <id column="mac_address" property="macAddress" jdbcType="CHAR" />
+    <result column="ip_address" property="ipAddress" jdbcType="CHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="expire_time" property="expireTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    mac_address, ip_address, update_time, expire_time
+  </sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    SELECT * FROM `ip_pool`
+  </select>
+
+</mapper>
+
